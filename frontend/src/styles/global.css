@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&display=swap');
+@import 'tailwindcss';
+
+@theme {
+    /* ── Colors ─────────────────────────────────────── */
+    --color-ivory: #faf7f2;
+    --color-cream: #f2ebe0;
+    --color-gold: #b8975a;
+    --color-gold-light: #d4b57a;
+    --color-dark: #1c1a17;
+    --color-muted: #8c8070;
+
+    /* ── Typography ─────────────────────────────────── */
+    --font-cormorant: 'Cormorant Garamond', serif;
+    --font-jost: 'Jost', sans-serif;
+}
+
+/* ── Resets ──────────────────────────────────────── */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    width: 100%;
+}
+
+body {
+    background: var(--color-ivory);
+    color: var(--color-dark);
+    font-family: var(--font-jost);
+    font-weight: 300;
+    overflow-x: hidden;
+}
+
+/* ── Timeline track ─────────────────────────────── */
+.timeline-track {
+    position: relative;
+}
+
+.timeline-track::before {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        var(--color-gold-light) 15%,
+        var(--color-gold-light) 85%,
+        transparent 100%
+    );
+}
