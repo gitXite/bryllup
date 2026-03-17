@@ -1,0 +1,16 @@
+{
+  "name": "bryllup",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=frontend\" \"npm run dev --workspace=server\"",
+    "build": "npm run build --workspace=frontend && npm run build --workspace=server",
+    "typecheck": "npm run typecheck --workspace=frontend && npm run typecheck --workspace=server"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
