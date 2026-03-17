@@ -39,9 +39,11 @@ function SectionHead({
 }
 
 export default function App() {
+    const hasShown = localStorage.getItem('overlay_shown');
+
     return (
         <>
-            <IntroOverlay />
+            {!hasShown && <IntroOverlay />}
             <Nav />
 
             <Hero
@@ -86,18 +88,16 @@ export default function App() {
                     />
                     <Reveal delay={0.25}>
                         <p className='text-base leading-[1.9] text-muted'>
-                            Vi møttes en tidlig høstmorgen på kaféen på hjørnet,
-                            to fremmede med samme bestilling og et smil som sa
-                            mer enn tusen ord. Siden den dagen har livet vært
-                            mer fargerikt, mer morsommere, og fylt av det som
-                            virkelig betyr noe.
+                            Vi matchet på Hinge og knyttet bond over pizza, lurte på hvem som lagde den best.
+                            Avtalte å møtes over drinker på Last Monkey, lite visste vi det skulle ende i fest.<br/>
+                            Med romantiske turer og stadig godt selskap, visste Daniel tidlig hvor å rette sin stavn. 
+                            Gjenstod det bare å be om tillatelse, for å ende historien med et frieri i København. 
                         </p>
                     </Reveal>
                     <Reveal delay={0.35}>
                         <p className='text-base leading-[1.9] text-muted mt-6'>
-                            Nå inviterer vi deg — vår nærmeste familie og våre
-                            kjæreste venner — til å feire den dagen vi sier ja
-                            til hverandre for alltid.
+                            Nå inviterer vi deg - vår nærmeste familie og våre
+                            kjæreste venner - til å feire den dagen vi forhåpentligvis aldri glemmer.
                         </p>
                     </Reveal>
                 </div>

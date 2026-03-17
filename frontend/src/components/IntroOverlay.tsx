@@ -8,6 +8,7 @@ export default function IntroOverlay() {
 
     useEffect(() => {
         const id = setTimeout(() => setVisible(false), HOLD_MS);
+        localStorage.setItem('overlay_shown', 'true');
         return () => clearTimeout(id);
     }, []);
 

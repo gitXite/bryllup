@@ -35,6 +35,9 @@ function Ring({ size, delay }: { size: number; delay: number }) {
 }
 
 export default function Hero({ name1, name2, date, location }: Props) {
+    const hasShown = localStorage.getItem('overlay_shown');
+    const delay: number = hasShown ? 0.0 : 2.8;
+
     return (
         <section
             id='hero'
@@ -44,18 +47,18 @@ export default function Hero({ name1, name2, date, location }: Props) {
                 className='absolute inset-0 pointer-events-none'
                 style={{
                     background: `
-            radial-gradient(ellipse 60% 50% at 50% 0%,  rgba(184,151,90,0.08) 0%, transparent 70%),
-            radial-gradient(ellipse 40% 60% at 80% 80%, rgba(184,151,90,0.05) 0%, transparent 60%)
-          `,
+                        radial-gradient(ellipse 60% 50% at 50% 0%,  rgba(184,151,90,0.08) 0%, transparent 70%),
+                        radial-gradient(ellipse 40% 60% at 80% 80%, rgba(184,151,90,0.05) 0%, transparent 60%)
+                    `,
                 }}
             />
 
-            <Ring size={600} delay={3} />
-            <Ring size={800} delay={3.2} />
+            <Ring size={600} delay={delay + 0.2} />
+            <Ring size={800} delay={delay + 0.4} />
 
             <motion.p
                 className='uppercase tracking-[0.4em] text-gold text-xs'
-                {...fadeUp(2.8)}
+                {...fadeUp(delay)}
             >
                 Vi gleder oss til å feire med deg
             </motion.p>
@@ -66,7 +69,7 @@ export default function Hero({ name1, name2, date, location }: Props) {
                     fontSize: 'clamp(4rem,12vw,9rem)',
                     letterSpacing: '-0.01em',
                 }}
-                {...fadeUp(3)}
+                {...fadeUp(delay + 0.2)}
             >
                 {name1} <em className='italic text-gold'>&amp;</em> {name2}
             </motion.h1>
@@ -79,13 +82,13 @@ export default function Hero({ name1, name2, date, location }: Props) {
                 }}
                 initial={{ width: 0, opacity: 0 }}
                 animate={{ width: 'min(400px, 60vw)', opacity: 1 }}
-                transition={{ duration: 0.8, ease: 'easeOut', delay: 3.4 }}
+                transition={{ duration: 0.8, ease: 'easeOut', delay: delay + 0.6 }}
             />
 
             <motion.p
                 className='uppercase tracking-[0.35em] text-muted'
                 style={{ fontSize: '0.75rem' }}
-                {...fadeUp(3.6)}
+                {...fadeUp(delay + 0.8)}
             >
                 {date}
             </motion.p>
@@ -93,7 +96,7 @@ export default function Hero({ name1, name2, date, location }: Props) {
             <motion.p
                 className='font-cormorant italic font-light text-muted mt-2'
                 style={{ fontSize: '1.4rem' }}
-                {...fadeUp(3.8)}
+                {...fadeUp(delay + 1.0)}
             >
                 {location}
             </motion.p>
@@ -102,7 +105,7 @@ export default function Hero({ name1, name2, date, location }: Props) {
                 className='absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2'
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 1, ease: 'easeOut', delay: 4.2 }}
+                transition={{ duration: 1, ease: 'easeOut', delay: delay + 1.4 }}
             >
                 <span
                     className='uppercase tracking-[0.3em] text-muted'
