@@ -9,4 +9,9 @@ export default defineConfig({
             '@': new URL('./src', import.meta.url).pathname,
         },
     },
+    server: {
+        proxy: {
+            '/api': 'http://localhost:3000'
+        }
+    }
 });
