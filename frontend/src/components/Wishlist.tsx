@@ -248,7 +248,7 @@ export function Wishlist() {
                     </div>
 
                     <div
-                        className={`fixed inset-0 lg:sticky lg:top-32 bg-background lg:bg-transparent z-50 lg:z-auto transition-all duration-500 overflow-auto
+                        className={`fixed inset-0 lg:sticky lg:top-32 bg-background lg:bg-transparent max-h-[800px] z-50 lg:z-auto transition-all duration-500 overflow-auto
                             ${
                                 selectedItem
                                     ? 'opacity-100 translate-x-0 lg:w-3/5'
