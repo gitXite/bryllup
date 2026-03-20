@@ -4,6 +4,7 @@ import Hero from '@/components/Hero';
 import Countdown from '@/components/Countdown';
 import Reveal from '@/components/Reveal';
 import RSVPForm from '@/components/RSVPForm';
+import Footer from '@/components/Footer';
 import { wedding, program, infoCards } from '@/config';
 
 function SectionHead({
@@ -242,19 +243,7 @@ export default function MainPage() {
                 </div>
             </section>
 
-            {/* ── FOOTER ───────────────────────────────────────── */}
-            <footer className='bg-dark py-12 text-center border-t border-gold/15'>
-                <p
-                    className='font-cormorant text-ivory font-light tracking-[0.15em] mb-4 text-4xl'
-                >
-                    {wedding.name1[0]} &amp; {wedding.name2[0]}
-                </p>
-                <p
-                    className='uppercase tracking-[0.2em] text-ivory/30 text-xs font-thin'
-                >
-                    {wedding.dateDisplay} - {wedding.venue}, {wedding.city}
-                </p>
-            </footer>
+            <Footer />
         </>
     );
 }

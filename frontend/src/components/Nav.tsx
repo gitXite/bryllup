@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { Gift } from 'lucide-react';
 
@@ -17,6 +18,7 @@ function scrollTo(href: string) {
 export default function Nav() {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handler = () => setScrolled(window.scrollY > 60);
@@ -35,7 +37,7 @@ export default function Nav() {
     return (
         <>
             <nav
-                className='fixed top-0 inset-x-0 z-50 flex items-center border border-transparent justify-between px-15 py-7 transition-all duration-300'
+                className='fixed top-0 max-w-screen inset-x-0 z-50 flex items-center border border-transparent justify-between px-15 py-7 transition-all duration-300'
                 style={
                     scrolled
                         ? {
@@ -69,9 +71,7 @@ export default function Nav() {
                                         <Gift size={14} />
                                     </span>
                                 ) : (
-                                    <span>
-                                        {label}
-                                    </span>
+                                    <span>{label}</span>
                                 )}
                             </a>
                         </li>
@@ -94,7 +94,7 @@ export default function Nav() {
             <AnimatePresence>
                 {menuOpen && (
                     <motion.div
-                        className='fixed inset-0 z-40 bg-dark flex flex-col items-center justify-center gap-8 md:hidden'
+                        className='fixed max-w-screen inset-0 z-40 bg-dark flex flex-col items-center justify-center gap-8 md:hidden'
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -113,7 +113,7 @@ export default function Nav() {
                                     ease: 'easeOut',
                                 }}
                                 onClick={() => {
-                                    scrollTo(href);
+                                    href[0] == '#' ? scrollTo(href) : navigate('/gaveliste');
                                     setMenuOpen(false);
                                 }}
                             >
