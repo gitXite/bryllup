@@ -189,7 +189,7 @@ export function Wishlist() {
                 <div className='flex flex-col lg:flex-row gap-8'>
                     <div
                         className={`w-full transition-all duration-500
-                            ${selectedItem ? 'lg:w-3/5' : 'lg:w-full'}
+                            ${selectedItem ? 'lg:w-2/5' : 'lg:w-full'}
                         `}
                     >
                         <div
@@ -251,7 +251,7 @@ export function Wishlist() {
                         className={`fixed inset-0 lg:sticky lg:top-0 bg-background lg:bg-transparent z-50 lg:z-auto transition-all duration-500 overflow-auto
                             ${
                                 selectedItem
-                                    ? 'opacity-100 translate-x-0 lg:w-2/5'
+                                    ? 'opacity-100 translate-x-0 lg:w-3/5'
                                     : 'opacity-0 translate-x-full lg:translate-x-0 pointer-events-none lg:w-0 lg:overflow-hidden'
                             }
                         `}
@@ -265,7 +265,7 @@ export function Wishlist() {
                                     <X className='w-5 h-5' />
                                 </button>
 
-                                <div className='relative aspect-[4/3] bg-muted/10'>
+                                <div className='relative aspect-[4/3] max-h-[500px] bg-muted/10'>
                                     <img
                                         src={
                                             selectedItem.images[
