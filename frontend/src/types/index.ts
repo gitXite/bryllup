@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type Side = "left" | "right";
 
 export interface ProgramItem {
@@ -10,7 +12,7 @@ export interface ProgramItem {
 export interface InfoCard {
   readonly title: string;
   readonly body:  string;
-  readonly link?: { href: string; label: string; };
+  readonly link?: { href: string; label: string; icon: React.ComponentType; external: boolean };
 }
 
 export interface RSVPPayload {

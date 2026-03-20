@@ -1,4 +1,6 @@
-import { InfoCard } from './types';
+import ExternalLinkElement from './components/ExternalLinkElement';
+import GiftElement from './components/GiftElement';
+import { InfoCard } from '@/types';
 
 export const wedding = {
     name1: 'Maren',
@@ -65,12 +67,12 @@ export const infoCards: InfoCard[] = [
     {
         title: 'Sted',
         body: `${wedding.venue}\nTangevegen 131\n5620 ${wedding.city}`,
-        link: { href: wedding.mapsUrl, label: 'Åpne i kart' },
+        link: { href: wedding.mapsUrl, label: 'Åpne i kart', icon: ExternalLinkElement, external: true },
     },
     {
         title: 'Overnatting',
         body: `Vi har reservert hele ${wedding.hotel.name}. `,
-        link: { href: wedding.hotel.url, label: 'Se hotellet' },
+        link: { href: wedding.hotel.url, label: 'Se hotellet', icon: ExternalLinkElement, external: true },
     },
     {
         title: 'Transport',
@@ -82,8 +84,8 @@ export const infoCards: InfoCard[] = [
     },
     {
         title: 'Ønskeliste',
-        body: 'Vårt største ønske er at dere er der. Ønsker dere gi en gave, setter vi pris på bidrag til bryllupsreisen.',
-        // link:  { href: "#", label: `Konto: ${wedding.bankAccount}` },
+        body: 'Gavelisten finner dere under.',
+        link:  { href: "/gaveliste", label: `Gaveliste`, icon: GiftElement, external: false },
     },
     {
         title: 'Taler',

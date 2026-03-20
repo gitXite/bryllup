@@ -5,7 +5,6 @@ import Countdown from '@/components/Countdown';
 import Reveal from '@/components/Reveal';
 import RSVPForm from '@/components/RSVPForm';
 import { wedding, program, infoCards } from '@/config';
-import { ExternalLink } from 'lucide-react';
 
 function SectionHead({
     eyebrow,
@@ -201,14 +200,14 @@ export default function MainPage() {
                                     {card.link && (
                                         <a
                                             href={card.link.href}
-                                            target='_blank'
-                                            rel='noopener noreferrer'
+                                            target={`${card.link.external ? '_blank' : ''}`}
+                                            rel={`${card.link.external ? 'noopener noreferrer' : ''}`}
                                             className='inline-flex items-center gap-1 mt-4 text-gold text-xs tracking-wider
                                  border-b border-gold/20 pb-px hover:border-gold
                                  transition-colors duration-200 no-underline'
                                         >
                                             {card.link.label}
-                                            <ExternalLink size={12} />
+                                            {card.link.icon ? <card.link.icon /> : null}
                                         </a>
                                     )}
                                 </div>
