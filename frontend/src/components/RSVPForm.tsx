@@ -54,7 +54,9 @@ function Success() {
 
 export default function RSVPForm() {
     const [form, setForm] = useState<FormState>(EMPTY);
-    const [submitted, setSubmitted] = useState(false);
+    const [submitted, setSubmitted] = useState(() => {
+        return localStorage.getItem('sendt_inn') ? true : false;
+    });
     const [error, setError] = useState('');
 
     function update<K extends keyof FormState>(key: K, value: FormState[K]) {
@@ -71,6 +73,7 @@ export default function RSVPForm() {
         // 🔌 Replace with your API endpoint:
         // await fetch("/api/rsvp", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(form) });
         console.log('RSVP submitted:', form);
+        localStorage.setItem('sendt_inn', 'true');
         setSubmitted(true);
     }
 
