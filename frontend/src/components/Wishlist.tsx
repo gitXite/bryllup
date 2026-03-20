@@ -174,13 +174,12 @@ export function Wishlist() {
                 </div>
             </header>
 
-            {/* Main Content */}
             <main className='max-w-7xl mx-auto px-6 py-12'>
-                <div className={`mb-10 ${selectedItem ? 'md:text-left' : 'text-center'}`}>
+                <div className={`mb-10 ${selectedItem ? 'text-center md:text-left' : 'text-center'}`}>
                     <h2 className='font-cormorant text-2xl md:text-3xl font-medium text-foreground mb-3'>
                         Vår Ønskeliste
                     </h2>
-                    <p className={`text-muted-v-foreground ${selectedItem ? 'md:max-w-md' : 'max-w-xl mx-auto'} leading-relaxed`}>
+                    <p className={`text-muted-v-foreground ${selectedItem ? 'max-w-xl md:max-w-md' : 'max-w-xl mx-auto'} leading-relaxed`}>
                         Lorem ipsum dolor sit, amet consectetur adipisicing
                         elit. Libero quasi qui molestias rerum. Quis distinctio
                         adipisci quo blanditiis.
@@ -188,7 +187,6 @@ export function Wishlist() {
                 </div>
 
                 <div className='flex flex-col lg:flex-row gap-8'>
-                    {/* Left Side - Item List */}
                     <div
                         className={`w-full transition-all duration-500
                             ${selectedItem ? 'lg:w-2/5' : 'lg:w-full'}
@@ -249,7 +247,6 @@ export function Wishlist() {
                         </div>
                     </div>
 
-                    {/* Right Side - Detail Panel */}
                     <div
                         className={`fixed inset-0 lg:relative lg:inset-auto bg-background lg:bg-transparent z-50 lg:z-auto transition-all duration-500 overflow-auto
                             ${
@@ -261,7 +258,6 @@ export function Wishlist() {
                     >
                         {selectedItem && (
                             <div className='lg:sticky lg:top-32 bg-card rounded-none lg:rounded-xl border-0 lg:border border-border/50 overflow-hidden'>
-                                {/* Close Button */}
                                 <button
                                     onClick={handleClose}
                                     className='absolute top-4 right-4 z-10 p-2 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 text-muted-v-foreground hover:text-foreground transition-colors'
@@ -269,7 +265,6 @@ export function Wishlist() {
                                     <X className='w-5 h-5' />
                                 </button>
 
-                                {/* Main Image */}
                                 <div className='relative aspect-[4/3] bg-muted/10'>
                                     <img
                                         src={
@@ -287,7 +282,6 @@ export function Wishlist() {
                                     )}
                                 </div>
 
-                                {/* Thumbnail Gallery */}
                                 <div className='flex gap-2 p-4 border-b border-border/50'>
                                     {selectedItem.images.map((img, index) => (
                                         <button
@@ -312,7 +306,6 @@ export function Wishlist() {
                                     ))}
                                 </div>
 
-                                {/* Details */}
                                 <div className='p-6 lg:p-8'>
                                     <div className='flex items-start justify-between gap-4 mb-4'>
                                         <div>
@@ -368,7 +361,7 @@ export function Wishlist() {
                                         </a>
                                         <button className='inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium border border-border hover:bg-muted/10 transition-colors'>
                                             <Heart className='w-4 h-4' />
-                                            Lagre
+                                            Reserver
                                         </button>
                                     </div>
                                 </div>
