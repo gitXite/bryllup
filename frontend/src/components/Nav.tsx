@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { Gift } from 'lucide-react';
 
 const links = [
     { href: '#nedtelling', label: 'Nedtelling' },
     { href: '#program', label: 'Program' },
     { href: '#informasjon', label: 'Informasjon' },
     { href: '#rsvp', label: 'Svar' },
+    { href: '/gaveliste', label: 'Gaveliste', icon: true },
 ];
 
 function scrollTo(href: string) {
@@ -53,15 +55,24 @@ export default function Nav() {
 
                 {/* Desktop links */}
                 <ul className='hidden md:flex gap-10 list-none'>
-                    {links.map(({ href, label }) => (
+                    {links.map(({ href, label, icon }) => (
                         <li key={href}>
                             <a
                                 href={href}
-                                className='text-xs tracking-[0.25em] uppercase text-muted
+                                className='flex text-xs tracking-[0.25em] uppercase text-muted
                            bg-transparent border-none cursor-pointer p-0
                            hover:text-gold transition-colors duration-200'
                             >
-                                {label}
+                                {icon ? (
+                                    <span className='flex gap-1'>
+                                        {label}
+                                        <Gift size={14} />
+                                    </span>
+                                ) : (
+                                    <span>
+                                        {label}
+                                    </span>
+                                )}
                             </a>
                         </li>
                     ))}
