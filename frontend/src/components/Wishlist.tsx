@@ -176,11 +176,11 @@ export function Wishlist() {
 
             {/* Main Content */}
             <main className='max-w-7xl mx-auto px-6 py-12'>
-                <div className={`mb-10 ${selectedItem ? 'text-left' : 'text-center'}`}>
+                <div className={`mb-10 ${selectedItem ? 'md:text-left' : 'text-center'}`}>
                     <h2 className='font-cormorant text-2xl md:text-3xl font-medium text-foreground mb-3'>
                         Vår Ønskeliste
                     </h2>
-                    <p className={`text-muted-v-foreground ${selectedItem ? 'max-w-md' : 'max-w-xl mx-auto'} leading-relaxed`}>
+                    <p className={`text-muted-v-foreground ${selectedItem ? 'md:max-w-md' : 'max-w-xl mx-auto'} leading-relaxed`}>
                         Lorem ipsum dolor sit, amet consectetur adipisicing
                         elit. Libero quasi qui molestias rerum. Quis distinctio
                         adipisci quo blanditiis.
