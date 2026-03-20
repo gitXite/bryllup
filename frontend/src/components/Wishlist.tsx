@@ -189,7 +189,7 @@ export function Wishlist() {
                 <div className='flex flex-col lg:flex-row gap-8'>
                     <div
                         className={`w-full transition-all duration-500
-                            ${selectedItem ? 'lg:w-2/5' : 'lg:w-full'}
+                            ${selectedItem ? 'lg:w-3/5' : 'lg:w-full'}
                         `}
                     >
                         <div
@@ -248,16 +248,16 @@ export function Wishlist() {
                     </div>
 
                     <div
-                        className={`fixed inset-0 lg:relative lg:inset-auto bg-background lg:bg-transparent z-50 lg:z-auto transition-all duration-500 overflow-auto
+                        className={`fixed inset-0 lg:sticky lg:top-0 bg-background lg:bg-transparent z-50 lg:z-auto transition-all duration-500 overflow-auto
                             ${
                                 selectedItem
-                                    ? 'opacity-100 translate-x-0 lg:w-3/5'
+                                    ? 'opacity-100 translate-x-0 lg:w-2/5'
                                     : 'opacity-0 translate-x-full lg:translate-x-0 pointer-events-none lg:w-0 lg:overflow-hidden'
                             }
                         `}
                     >
                         {selectedItem && (
-                            <div className='lg:sticky lg:top-0 lg:max-h-[800px] bg-card rounded-none lg:rounded-xl border-0 lg:border border-border/50 overflow-hidden'>
+                            <div className='lg:sticky lg:top-0 bg-card rounded-none lg:rounded-xl border-0 lg:border border-border/50 overflow-hidden'>
                                 <button
                                     onClick={handleClose}
                                     className='absolute top-4 right-4 z-10 p-2 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 text-muted-v-foreground hover:text-foreground transition-colors'
