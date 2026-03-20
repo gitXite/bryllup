@@ -55,7 +55,7 @@ const wishlistItems: WishlistItem[] = [
         images: [
             'https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=800&h=600&fit=crop',
             'https://images.unsplash.com/photo-1610701596061-2ecf227e85b2?w=800&h=600&fit=crop',
-            'https://images.unsplash.com/photo-1622480914645-2c1970d9d7b0?w=800&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1622480914645-2c1970d tried?w=800&h=600&fit=crop',
         ],
         link: 'https://www.vitamix.com',
         category: 'Kitchen',
@@ -248,12 +248,16 @@ export function Wishlist() {
                     </div>
 
                     <div
-                        className={`lg:sticky lg:top-24 self-start bg-background lg:bg-transparent z-50 lg:z-auto transition-all duration-500 overflow-hidden
-                            ${selectedItem ? 'opacity-100 translate-x-0 lg:w-3/5' : 'opacity-0 translate-x-full lg:translate-x-0 pointer-events-none lg:w-0 lg:overflow-hidden'}
+                        className={`fixed inset-0 lg:sticky lg:top-0 bg-background lg:bg-transparent z-50 lg:z-auto transition-all duration-500 overflow-auto
+                            ${
+                                selectedItem
+                                    ? 'opacity-100 translate-x-0 lg:w-3/5'
+                                    : 'opacity-0 translate-x-full lg:translate-x-0 pointer-events-none lg:w-0 lg:overflow-hidden'
+                            }
                         `}
                     >
                         {selectedItem && (
-                            <div className='bg-card rounded-none lg:rounded-xl border-0 lg:border border-border/50 h-full flex flex-col'>
+                            <div className='lg:sticky lg:top-0 bg-card rounded-none lg:rounded-xl border-0 lg:border border-border/50 overflow-hidden'>
                                 <button
                                     onClick={handleClose}
                                     className='absolute top-4 right-4 z-10 p-2 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 text-muted-v-foreground hover:text-foreground transition-colors'
@@ -261,9 +265,13 @@ export function Wishlist() {
                                     <X className='w-5 h-5' />
                                 </button>
 
-                                <div className='relative flex-shrink-0 h-48 lg:h-56 bg-muted/10'>
+                                <div className='relative aspect-[4/3] max-h-[500px] bg-muted/10'>
                                     <img
-                                        src={selectedItem.images[activeImageIndex]}
+                                        src={
+                                            selectedItem.images[
+                                                activeImageIndex
+                                            ]
+                                        }
                                         alt={selectedItem.name}
                                         className='object-cover'
                                     />
@@ -274,13 +282,19 @@ export function Wishlist() {
                                     )}
                                 </div>
 
-                                <div className='flex gap-2 p-3 border-b border-border/50 flex-shrink-0'>
+                                <div className='flex gap-2 p-4 border-b border-border/50'>
                                     {selectedItem.images.map((img, index) => (
                                         <button
                                             key={index}
-                                            onClick={() => setActiveImageIndex(index)}
+                                            onClick={() =>
+                                                setActiveImageIndex(index)
+                                            }
                                             className={`relative w-16 h-16 rounded-md overflow-hidden border-2 transition-all
-                                                ${activeImageIndex === index ? 'border-accent' : 'border-transparent hover:border-border'}
+                                                ${
+                                                    activeImageIndex === index
+                                                        ? 'border-accent'
+                                                        : 'border-transparent hover:border-border'
+                                                }
                                             `}
                                         >
                                             <img
@@ -292,7 +306,7 @@ export function Wishlist() {
                                     ))}
                                 </div>
 
-                                <div className='p-5 lg:p-6 flex-1 flex flex-col'>
+                                <div className='p-6 lg:p-8'>
                                     <div className='flex items-start justify-between gap-4 mb-4'>
                                         <div>
                                             <p className='text-xs uppercase tracking-wider text-muted-v-foreground mb-1'>
@@ -304,35 +318,41 @@ export function Wishlist() {
                                         </div>
                                         <div className='text-right'>
                                             <p className='text-2xl font-medium text-foreground'>
-                                                NOK {selectedItem.price.toLocaleString()}
+                                                NOK {' '}
+                                                {selectedItem.price.toLocaleString()}
                                             </p>
                                             <p className='text-right'>
-                                                {selectedItem.amountReserved.toLocaleString()} /
+                                                {selectedItem.amountReserved.toLocaleString()}
+                                                /
                                                 {selectedItem.totalAmount.toLocaleString()}
                                             </p>
                                         </div>
                                     </div>
 
-                                    <span className='inline-block px-3 py-1 text-xs uppercase tracking-wider text-muted-v-foreground bg-muted/10 rounded-full mb-6'>
+                                    <span className='inline-block px-3 py-1 text-xs uppercase tracking-wider text--v-foreground bg-muted/10 rounded-full mb-6'>
                                         {selectedItem.category}
                                     </span>
 
-                                    <p className='text-muted-v-foreground leading-relaxed mb-6 line-clamp-5 lg:line-clamp-6'>
+                                    <p className='text-muted-v-foreground leading-relaxed mb-8'>
                                         {selectedItem.longDescription}
                                     </p>
 
-                                    <div className='flex flex-col sm:flex-row gap-3 mt-auto'>
+                                    <div className='flex flex-col sm:flex-row gap-3'>
                                         <a
                                             href={selectedItem.link}
                                             target='_blank'
                                             rel='noopener noreferrer'
                                             className={`flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition-colors
-                                                ${selectedItem.reserved
-                                                    ? 'bg-muted/10 text-muted-v-foreground cursor-not-allowed'
-                                                    : 'bg-primary text-primary-foreground hover:bg-primary/90'
+                                                ${
+                                                    selectedItem.reserved
+                                                        ? 'bg-muted/10 text-muted-v-foreground cursor-not-allowed'
+                                                        : 'bg-primary text-primary-foreground hover:bg-primary/90'
                                                 }
                                             `}
-                                            onClick={(e) => selectedItem.reserved && e.preventDefault()}
+                                            onClick={(e) =>
+                                                selectedItem.reserved &&
+                                                e.preventDefault()
+                                            }
                                         >
                                             <ExternalLink className='w-4 h-4' />
                                             {selectedItem.reserved
