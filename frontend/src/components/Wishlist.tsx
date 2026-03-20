@@ -176,11 +176,11 @@ export function Wishlist() {
 
             {/* Main Content */}
             <main className='max-w-7xl mx-auto px-6 py-12'>
-                <div className='mb-10 text-center'>
+                <div className={`mb-10 ${selectedItem ? 'text-left' : 'text-center'}`}>
                     <h2 className='font-cormorant text-2xl md:text-3xl font-medium text-foreground mb-3'>
                         Vår Ønskeliste
                     </h2>
-                    <p className='text-muted-v-foreground max-w-xl mx-auto leading-relaxed'>
+                    <p className={`text-muted-v-foreground ${selectedItem ? 'max-w-md' : 'max-w-xl mx-auto'} leading-relaxed`}>
                         Lorem ipsum dolor sit, amet consectetur adipisicing
                         elit. Libero quasi qui molestias rerum. Quis distinctio
                         adipisci quo blanditiis.
@@ -206,10 +206,10 @@ export function Wishlist() {
                                 <button
                                     key={item.id}
                                     onClick={() => handleItemClick(item)}
-                                    className={`group relative bg-card rounded-lg border border-border/50 overflow-hidden text-left transition-all duration-300 hover:border-gold-light/50 hover:shadow-lg
+                                    className={`group relative bg-card rounded-lg border border-border/50 overflow-hidden text-left transition-all duration-300 hover:border-gold-light/50 hover:shadow-md
                                         ${
                                             selectedItem?.id === item.id &&
-                                            'border-accent ring-1 ring-accent/20'
+                                            'border-gold-light hover:border-gold-light/100 shadow-md'
                                         }
                                     `}
                                 >
@@ -254,7 +254,7 @@ export function Wishlist() {
                         className={`fixed inset-0 lg:relative lg:inset-auto bg-background lg:bg-transparent z-50 lg:z-auto transition-all duration-500 overflow-auto
                             ${
                                 selectedItem
-                                    ? 'opacity-100 translate-x-0 lg:w-3/5'
+                                    ? 'opacity-100 translate-x-0 lg:w-3/5 lg:-translate-y-1/6'
                                     : 'opacity-0 translate-x-full lg:translate-x-0 pointer-events-none lg:w-0 lg:overflow-hidden'
                             }
                         `}
