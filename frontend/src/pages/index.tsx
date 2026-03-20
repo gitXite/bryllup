@@ -17,9 +17,7 @@ function SectionHead({
     return (
         <>
             <Reveal>
-                <span
-                    className='block uppercase tracking-[0.4em] text-gold mb-4'
-                >
+                <span className='block uppercase tracking-[0.4em] text-gold mb-4'>
                     {eyebrow}
                 </span>
             </Reveal>
@@ -53,10 +51,7 @@ export default function MainPage() {
                 location={`${wedding.venue}, ${wedding.city}`}
             />
 
-            <section
-                id='nedtelling'
-                className='bg-dark py-28 px-[4vw] text-center'
-            >
+            <section id='nedtelling' className='bg-dark py-28 px-4 text-center'>
                 <div className='max-w-4xl mx-auto'>
                     <SectionHead
                         eyebrow='Dager til vi sier ja'
@@ -74,7 +69,7 @@ export default function MainPage() {
                 </div>
             </section>
 
-            <section id='om-oss' className='py-28 px-[4vw] bg-ivory'>
+            <section id='om-oss' className='py-28 px-4 bg-ivory'>
                 <div className='max-w-xl mx-auto text-center'>
                     <SectionHead
                         eyebrow='Vår historie'
@@ -88,22 +83,28 @@ export default function MainPage() {
                     />
                     <Reveal delay={0.25}>
                         <p className='text-base leading-[1.9] text-muted'>
-                            Vi matchet på Hinge og knyttet bond over pizza, lurte på hvem som lagde den best.
-                            Avtalte å møtes over drinker på Last Monkey, lite visste vi det skulle ende i fest.<br/>
-                            Med romantiske turer og stadig godt selskap, visste Daniel tidlig hvor å rette sin stavn. 
-                            Gjenstod det bare å be om tillatelse, for å ende historien med et frieri i København. 
+                            Vi matchet på Hinge og knyttet bond over pizza,
+                            lurte på hvem som lagde den best. Avtalte å møtes
+                            over drinker på Last Monkey, lite visste vi det
+                            skulle ende i fest.
+                            <br />
+                            Med romantiske turer og stadig godt selskap, visste
+                            Daniel tidlig hvor å rette sin stavn. Gjenstod det
+                            bare å be om tillatelse, for å ende historien med et
+                            frieri i København.
                         </p>
                     </Reveal>
                     <Reveal delay={0.35}>
                         <p className='text-base leading-[1.9] text-muted mt-6'>
                             Nå inviterer vi deg - vår nærmeste familie og våre
-                            kjæreste venner - til å feire den dagen vi forhåpentligvis aldri glemmer.
+                            kjæreste venner - til å feire den dagen vi
+                            forhåpentligvis aldri glemmer.
                         </p>
                     </Reveal>
                 </div>
             </section>
 
-            <section id='program' className='py-28 px-[4vw] bg-cream'>
+            <section id='program' className='py-28 px-4 bg-cream'>
                 <div className='max-w-3xl mx-auto text-center'>
                     <SectionHead
                         eyebrow={wedding.dateDisplay}
@@ -119,13 +120,10 @@ export default function MainPage() {
                         {program.map((item, i) => (
                             <Reveal key={item.time} delay={i * 0.08}>
                                 <div
-                                    className='grid items-center mb-12'
-                                    style={{
-                                        gridTemplateColumns: '1fr 60px 1fr',
-                                    }}
+                                    className='grid items-center mb-12 grid-cols-[1fr_20px_1fr] sm:grid-cols-[1fr_60px_1fr]'
                                 >
                                     <div
-                                        className={`text-right pr-8 ${item.side === 'right' ? 'invisible' : ''}`}
+                                        className={`text-right pr-2 sm:pr-8 ${item.side === 'right' ? 'invisible' : ''}`}
                                     >
                                         <p
                                             className='uppercase tracking-[0.25em] text-gold mb-1'
@@ -147,7 +145,7 @@ export default function MainPage() {
                                         <div className='w-3 h-3 rounded-full bg-cream border-2 border-gold relative z-10' />
                                     </div>
                                     <div
-                                        className={`text-left pl-8 ${item.side === 'left' ? 'invisible' : ''}`}
+                                        className={`text-left pl-2 sm:pl-8 ${item.side === 'left' ? 'invisible' : ''}`}
                                     >
                                         <p
                                             className='uppercase tracking-[0.25em] text-gold mb-1'
@@ -172,7 +170,7 @@ export default function MainPage() {
                 </div>
             </section>
 
-            <section id='informasjon' className='py-28 px-[4vw] bg-ivory'>
+            <section id='informasjon' className='py-28 px-4 bg-ivory'>
                 <div className='max-w-5xl mx-auto text-center'>
                     <SectionHead
                         eyebrow='Praktisk informasjon'
@@ -208,7 +206,9 @@ export default function MainPage() {
                                  transition-colors duration-200 no-underline'
                                         >
                                             {card.link.label}
-                                            {card.link.icon ? <card.link.icon /> : null}
+                                            {card.link.icon ? (
+                                                <card.link.icon />
+                                            ) : null}
                                         </a>
                                     )}
                                 </div>
@@ -219,7 +219,7 @@ export default function MainPage() {
             </section>
 
             {/* ── RSVP ─────────────────────────────────────────── */}
-            <section id='rsvp' className='py-28 px-[4vw] bg-dark'>
+            <section id='rsvp' className='py-28 px-4 bg-dark'>
                 <div className='max-w-xl mx-auto text-center'>
                     <SectionHead
                         eyebrow='Bekreft din deltakelse'
