@@ -248,7 +248,7 @@ export function Wishlist() {
                     </div>
 
                     <div
-                        className={`fixed inset-0 lg:sticky lg:top-32 bg-background lg:bg-transparent max-h-[800px] z-50 lg:z-auto transition-all duration-500 overflow-auto
+                        className={`fixed inset-0 lg:sticky lg:top-32 bg-background lg:bg-transparent z-50 lg:z-auto transition-all duration-500 overflow-auto
                             ${
                                 selectedItem
                                     ? 'opacity-100 translate-x-0 lg:w-3/5'
@@ -257,7 +257,7 @@ export function Wishlist() {
                         `}
                     >
                         {selectedItem && (
-                            <div className='lg:sticky lg:top-32 bg-card rounded-none lg:rounded-xl border-0 lg:border border-border/50 overflow-hidden'>
+                            <div className='lg:sticky lg:top-32 lg:max-h-[800px] bg-card rounded-none lg:rounded-xl border-0 lg:border border-border/50 overflow-hidden'>
                                 <button
                                     onClick={handleClose}
                                     className='absolute top-4 right-4 z-10 p-2 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 text-muted-v-foreground hover:text-foreground transition-colors'
