@@ -257,7 +257,7 @@ export function Wishlist() {
                         `}
                     >
                         {selectedItem && (
-                            <div className='lg:sticky lg:top-0 bg-card rounded-none lg:rounded-xl border-0 lg:border border-border/50 overflow-hidden'>
+                            <div className='flex flex-col bg-card rounded-none lg:rounded-xl border-0 lg:border border-border/50 overflow-hidden'>
                                 <button
                                     onClick={handleClose}
                                     className='absolute top-4 right-4 z-10 p-2 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 text-muted-v-foreground hover:text-foreground transition-colors'
@@ -265,7 +265,7 @@ export function Wishlist() {
                                     <X className='w-5 h-5' />
                                 </button>
 
-                                <div className='relative aspect-[4/3] max-h-[500px] bg-muted/10'>
+                                <div className='relative aspect-[4/3] bg-muted/10'>
                                     <img
                                         src={
                                             selectedItem.images[
