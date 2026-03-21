@@ -9,7 +9,7 @@ const wishlistItems: WishlistItem[] = [
         brand: 'Le Creuset',
         price: 395,
         totalAmount: 1,
-        amountReserved: 1,
+        amountReserved: 0,
         description: 'Classic 5.5 Qt Round Dutch Oven in Sea Salt',
         longDescription:
             'The iconic Le Creuset Dutch Oven is a kitchen essential that will last a lifetime. Perfect for slow-cooked stews, soups, and braised meats, this beautiful piece combines exceptional heat distribution with timeless French design. The Sea Salt color will complement any kitchen aesthetic.',
@@ -28,7 +28,7 @@ const wishlistItems: WishlistItem[] = [
         brand: 'Frette',
         price: 890,
         totalAmount: 1,
-        amountReserved: 1,
+        amountReserved: 0,
         description: 'Luxury Egyptian Cotton Duvet Set in White',
         longDescription:
             'Experience the ultimate in luxury with this exquisite Frette bedding set. Crafted from the finest Egyptian cotton with a 600 thread count, these sheets offer unparalleled softness and breathability. The classic white adds timeless elegance to any bedroom.',
@@ -47,7 +47,7 @@ const wishlistItems: WishlistItem[] = [
         brand: 'Vitamix',
         price: 549,
         totalAmount: 1,
-        amountReserved: 1,
+        amountReserved: 0,
         description: 'Ascent Series A3500 Smart Blender',
         longDescription:
             'The Vitamix A3500 is the ultimate blending machine for the modern kitchen. With built-in wireless connectivity and touchscreen controls, it delivers restaurant-quality results at home. Perfect for smoothies, soups, nut butters, and so much more.',
@@ -86,7 +86,7 @@ const wishlistItems: WishlistItem[] = [
         brand: 'Dyson',
         price: 599,
         totalAmount: 1,
-        amountReserved: 1,
+        amountReserved: 0,
         description: 'Complete Long Hair Styler in Copper',
         longDescription:
             'The Dyson Airwrap uses intelligent heat control and the Coanda effect to style hair without extreme heat damage. This complete set includes attachments for curling, waving, smoothing, and drying - everything needed for salon-quality styling at home.',
@@ -105,7 +105,7 @@ const wishlistItems: WishlistItem[] = [
         brand: 'Smeg',
         price: 699,
         totalAmount: 1,
-        amountReserved: 1,
+        amountReserved: 0,
         description: 'Retro Style Espresso Machine in Cream',
         longDescription:
             'Bring Italian style to your kitchen with this stunning Smeg espresso machine. The retro design is complemented by modern functionality, including a 15-bar pump, steam wand for frothing, and cup warmer. Start every morning with café-quality espresso.',
