@@ -124,6 +124,13 @@ export function Wishlist() {
     const [scrolled, setScrolled] = useState(false);
     const [selectedItem, setSelectedItem] = useState<WishlistItem | null>(null);
     const [activeImageIndex, setActiveImageIndex] = useState(0);
+    const [quantity, setQuantity] = useState(1);
+    const availableAmount = selectedItem.totalAmount - selectedItem.amountReserved;
+    
+    // Reset quantity when item changes
+    useEffect(() => {
+        setQuantity(1);
+    }, [selectedItem?.id]);
 
     useEffect(() => {
         const handler = () => setScrolled(window.scrollY > 60);
@@ -146,6 +153,10 @@ export function Wishlist() {
     const handleItemClick = (item: WishlistItem) => {
         setSelectedItem(item);
         setActiveImageIndex(0);
+    };
+
+    const handleReserve = () => {
+        selectedItem.amountReserved = quantity;
     };
 
     const handleClose = () => {
