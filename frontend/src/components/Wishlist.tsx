@@ -189,7 +189,7 @@ export function Wishlist() {
                 <div className='flex flex-col lg:flex-row gap-8'>
                     <div
                         className={`w-full transition-all duration-500
-                            ${selectedItem ? 'lg:w-2/5' : 'lg:w-full'}
+                            ${selectedItem ? 'lg:w-3/5' : 'lg:w-full'}
                         `}
                     >
                         <div
@@ -251,7 +251,7 @@ export function Wishlist() {
                         className={`fixed inset-0 lg:sticky lg:top-0 bg-background lg:bg-transparent z-50 lg:z-auto transition-all duration-500 overflow-auto
                             ${
                                 selectedItem
-                                    ? 'opacity-100 translate-x-0 lg:w-3/5'
+                                    ? 'opacity-100 translate-x-0 lg:w-2/5 max-sm:h-screen'
                                     : 'opacity-0 translate-x-full lg:translate-x-0 pointer-events-none lg:w-0 lg:overflow-hidden'
                             }
                         `}
@@ -260,36 +260,30 @@ export function Wishlist() {
                             <div className='flex flex-col bg-card rounded-none lg:rounded-xl border-0 lg:border border-border/50 overflow-hidden'>
                                 <button
                                     onClick={handleClose}
-                                    className='absolute top-4 right-4 z-10 p-2 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 text-muted-v-foreground hover:text-foreground transition-colors'
+                                    className='absolute top-3 right-3 z-10 p-1.5 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 text-muted-v-foreground hover:text-foreground transition-colors'
                                 >
-                                    <X className='w-5 h-5' />
+                                    <X className='w-4 h-4' />
                                 </button>
-
-                                <div className='relative aspect-[4/3] bg-muted/10'>
+                    
+                                <div className='relative aspect-[16/9] bg-muted/10'>
                                     <img
-                                        src={
-                                            selectedItem.images[
-                                                activeImageIndex
-                                            ]
-                                        }
+                                        src={selectedItem.images[activeImageIndex]}
                                         alt={selectedItem.name}
                                         className='object-cover'
                                     />
                                     {selectedItem.reserved && (
-                                        <div className='absolute top-4 left-4 px-3 py-1.5 bg-foreground/90 text-card text-xs uppercase tracking-wider rounded-full'>
+                                        <div className='absolute top-3 left-3 px-2.5 py-1 bg-foreground/90 text-card text-xs uppercase tracking-wider rounded-full'>
                                             Reservert
                                         </div>
                                     )}
                                 </div>
-
-                                <div className='flex gap-2 p-4 border-b border-border/50'>
+                    
+                                <div className='flex gap-1.5 px-3 py-2.5 border-b border-border/50'>
                                     {selectedItem.images.map((img, index) => (
                                         <button
                                             key={index}
-                                            onClick={() =>
-                                                setActiveImageIndex(index)
-                                            }
-                                            className={`relative w-16 h-16 rounded-md overflow-hidden border-2 transition-all
+                                            onClick={() => setActiveImageIndex(index)}
+                                            className={`relative w-10 h-10 rounded overflow-hidden border-2 transition-all
                                                 ${
                                                     activeImageIndex === index
                                                         ? 'border-accent'
@@ -305,62 +299,56 @@ export function Wishlist() {
                                         </button>
                                     ))}
                                 </div>
-
-                                <div className='p-6 lg:p-8'>
-                                    <div className='flex items-start justify-between gap-4 mb-4'>
+                    
+                                <div className='p-4 lg:p-5'>
+                                    <div className='flex items-start justify-between gap-3 mb-3'>
                                         <div>
-                                            <p className='text-xs uppercase tracking-wider text-muted-v-foreground mb-1'>
+                                            <p className='text-xs uppercase tracking-wider text-muted-v-foreground mb-0.5'>
                                                 {selectedItem.brand}
                                             </p>
-                                            <h2 className='font-cormorant text-2xl lg:text-3xl font-medium text-foreground'>
+                                            <h2 className='font-cormorant text-xl lg:text-2xl font-medium text-foreground'>
                                                 {selectedItem.name}
                                             </h2>
                                         </div>
                                         <div className='text-right'>
-                                            <p className='text-2xl font-medium text-foreground'>
-                                                NOK {' '}
-                                                {selectedItem.price.toLocaleString()}
+                                            <p className='text-lg font-medium text-foreground'>
+                                                NOK {selectedItem.price.toLocaleString()}
                                             </p>
-                                            <p className='text-right'>
+                                            <p className='text-xs text-muted-v-foreground'>
                                                 {selectedItem.amountReserved.toLocaleString()}
                                                 /
                                                 {selectedItem.totalAmount.toLocaleString()}
                                             </p>
                                         </div>
                                     </div>
-
-                                    <span className='inline-block px-3 py-1 text-xs uppercase tracking-wider text--v-foreground bg-muted/10 rounded-full mb-6'>
+                    
+                                    <span className='inline-block px-2.5 py-0.5 text-xs uppercase tracking-wider text--v-foreground bg-muted/10 rounded-full mb-4'>
                                         {selectedItem.category}
                                     </span>
-
-                                    <p className='text-muted-v-foreground leading-relaxed mb-8'>
+                    
+                                    <p className='text-sm text-muted-v-foreground leading-relaxed mb-5'>
                                         {selectedItem.longDescription}
                                     </p>
-
-                                    <div className='flex flex-col sm:flex-row gap-3'>
-                                        <a
+                    
+                                    <div className='flex flex-col sm:flex-row gap-2'>
+                                        
                                             href={selectedItem.link}
                                             target='_blank'
                                             rel='noopener noreferrer'
-                                            className={`flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition-colors
+                                            className={`flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors
                                                 ${
                                                     selectedItem.reserved
                                                         ? 'bg-muted/10 text-muted-v-foreground cursor-not-allowed'
                                                         : 'bg-primary text-primary-foreground hover:bg-primary/90'
                                                 }
                                             `}
-                                            onClick={(e) =>
-                                                selectedItem.reserved &&
-                                                e.preventDefault()
-                                            }
+                                            onClick={(e) => selectedItem.reserved && e.preventDefault()}
                                         >
-                                            <ExternalLink className='w-4 h-4' />
-                                            {selectedItem.reserved
-                                                ? 'Allerede Reservert'
-                                                : 'Kjøp Gave'}
+                                            <ExternalLink className='w-3.5 h-3.5' />
+                                            {selectedItem.reserved ? 'Allerede Reservert' : 'Kjøp Gave'}
                                         </a>
-                                        <button className='inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium border border-border hover:bg-muted/10 transition-colors'>
-                                            <Heart className='w-4 h-4' />
+                                        <button className='inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium border border-border hover:bg-muted/10 transition-colors'>
+                                            <Heart className='w-3.5 h-3.5' />
                                             Reserver
                                         </button>
                                     </div>
