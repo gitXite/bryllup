@@ -248,10 +248,10 @@ export function Wishlist() {
                     </div>
 
                     <div
-                        className={`fixed inset-0 lg:sticky lg:top-32 lg:self-start lg:max-h-[calc(100vh-3rem)] lg:overflow-y-auto bg-background lg:bg-transparent z-50 lg:z-auto transition-all duration-500 overflow-auto
+                        className={`fixed inset-0 lg:sticky lg:top-32 lg:self-start max-sm:h-[100vh] lg:max-h-[calc(100vh-3rem)] lg:overflow-y-auto bg-background lg:bg-transparent z-50 lg:z-auto transition-all duration-500 overflow-auto
                             ${
                                 selectedItem
-                                    ? 'opacity-100 translate-x-0 lg:w-2/4'
+                                    ? 'opacity-100 translate-x-0 lg:w-2/4 lg:-translate-y-32'
                                     : 'opacity-0 translate-x-full lg:translate-x-0 pointer-events-none lg:w-0 lg:overflow-hidden'
                             }
                         `}
