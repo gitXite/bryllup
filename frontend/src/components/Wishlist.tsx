@@ -131,6 +131,18 @@ export function Wishlist() {
         return () => window.removeEventListener('scroll', handler);
     }, []);
 
+    useEffect(() => {
+        const isMobile = window.innerWidth < 1024;
+        if (selectedItem && isMobile) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [selectedItem]);
+
     const handleItemClick = (item: WishlistItem) => {
         setSelectedItem(item);
         setActiveImageIndex(0);
@@ -257,7 +269,7 @@ export function Wishlist() {
                         `}
                     >
                         {selectedItem && (
-                            <div className='flex flex-col h-full lg:h-auto bg-card rounded-none lg:rounded-xl border-0 lg:border border-border/50 overflow-hidden'>
+                            <div className='flex flex-col min-h-full lg:h-auto bg-card rounded-none lg:rounded-xl border-0 lg:border border-border/50 overflow-hidden'>
                                 <button
                                     onClick={handleClose}
                                     className='absolute top-3 right-3 z-10 p-1.5 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 text-muted-v-foreground hover:text-foreground transition-colors'
