@@ -156,7 +156,7 @@ export function Wishlist() {
     };
 
     const handleReserve = () => {
-        selectedItem?.amountReserved = quantity;
+        return;
     };
 
     const handleClose = () => {
