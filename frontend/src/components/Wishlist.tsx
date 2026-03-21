@@ -331,7 +331,7 @@ export function Wishlist() {
                                     </p>
                     
                                     <div className='flex flex-col sm:flex-row gap-2'>
-                                        
+                                        <a
                                             href={selectedItem.link}
                                             target='_blank'
                                             rel='noopener noreferrer'
