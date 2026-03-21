@@ -125,7 +125,7 @@ export function Wishlist() {
     const [selectedItem, setSelectedItem] = useState<WishlistItem | null>(null);
     const [activeImageIndex, setActiveImageIndex] = useState(0);
     const [quantity, setQuantity] = useState(1);
-    const availableAmount = selectedItem.totalAmount - selectedItem.amountReserved;
+    const availableAmount = selectedItem?.totalAmount - selectedItem?.amountReserved;
     
     // Reset quantity when item changes
     useEffect(() => {
@@ -156,7 +156,7 @@ export function Wishlist() {
     };
 
     const handleReserve = () => {
-        selectedItem.amountReserved = quantity;
+        selectedItem?.amountReserved = quantity;
     };
 
     const handleClose = () => {
