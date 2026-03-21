@@ -277,7 +277,7 @@ export function Wishlist() {
                                     <X className='w-4 h-4' />
                                 </button>
                     
-                                <div className='relative aspect-[16/9] bg-muted/10'>
+                                <div className='relative aspect-[4/3] bg-muted/10'>
                                     <img
                                         src={selectedItem.images[activeImageIndex]}
                                         alt={selectedItem.name}
@@ -322,15 +322,49 @@ export function Wishlist() {
                                                 {selectedItem.name}
                                             </h2>
                                         </div>
-                                        <div className='text-right'>
+                                        <div className='text-right relative top-5'>
                                             <p className='text-lg font-medium text-foreground'>
                                                 NOK {selectedItem.price.toLocaleString()}
                                             </p>
-                                            <p className='text-xs text-muted-v-foreground'>
-                                                {selectedItem.amountReserved.toLocaleString()}
-                                                /
-                                                {selectedItem.totalAmount.toLocaleString()}
-                                            </p>
+                                            {selectedItem.totalAmount > 1 && (
+                                                <div className='mb-4'>
+                                                    <div className='flex items-center justify-between mb-1.5'>
+                                                        <span className='text-xs uppercase tracking-wider text-muted-v-foreground'>
+                                                            Reservert
+                                                        </span>
+                                                        <span className='text-xs text-muted-v-foreground'>
+                                                            {selectedItem.amountReserved} / {selectedItem.totalAmount}
+                                                        </span>
+                                                    </div>
+                                                    <div className='w-full h-1 bg-muted/20 rounded-full'>
+                                                        <div
+                                                            className='h-1 bg-accent rounded-full transition-all'
+                                                            style={{ width: `${(selectedItem.amountReserved / selectedItem.totalAmount) * 100}%` }}
+                                                        />
+                                                    </div>
+                                            
+                                                    {availableAmount > 0 && (
+                                                        <div className='flex items-center gap-3 mt-3'>
+                                                            <span className='text-xs text-muted-v-foreground'>Antall:</span>
+                                                            <div className='flex items-center gap-2'>
+                                                                <button
+                                                                    onClick={() => setQuantity(q => Math.max(1, q - 1))}
+                                                                    className='w-6 h-6 rounded-full border border-border flex items-center justify-center text-muted-v-foreground hover:text-foreground transition-colors'
+                                                                >
+                                                                    <Minus className='w-3 h-3' />
+                                                                </button>
+                                                                <span className='text-sm font-medium w-4 text-center'>{quantity}</span>
+                                                                <button
+                                                                    onClick={() => setQuantity(q => Math.min(availableAmount, q + 1))}
+                                                                    className='w-6 h-6 rounded-full border border-border flex items-center justify-center text-muted-v-foreground hover:text-foreground transition-colors'
+                                                                >
+                                                                    <Plus className='w-3 h-3' />
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                     
@@ -343,26 +377,28 @@ export function Wishlist() {
                                     </p>
                     
                                     <div className='flex flex-col sm:flex-row gap-2'>
+                                        <button
+                                            onClick={handleReserve}
+                                            disabled={availableAmount === 0}
+                                            className={`flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors
+                                                ${availableAmount === 0
+                                                    ? 'bg-muted/10 text-muted-v-foreground cursor-not-allowed'
+                                                    : 'bg-primary text-primary-foreground hover:bg-primary/90'
+                                                }
+                                            `}
+                                        >
+                                            <Heart className='w-3.5 h-3.5' />
+                                            {availableAmount === 0 ? 'Fullt reservert' : 'Reserver'}
+                                        </button>
                                         <a
                                             href={selectedItem.link}
                                             target='_blank'
                                             rel='noopener noreferrer'
-                                            className={`flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors
-                                                ${
-                                                    selectedItem.reserved
-                                                        ? 'bg-muted/10 text-muted-v-foreground cursor-not-allowed'
-                                                        : 'bg-primary text-primary-foreground hover:bg-primary/90'
-                                                }
-                                            `}
-                                            onClick={(e) => selectedItem.reserved && e.preventDefault()}
+                                            className='inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium border border-border hover:bg-muted/10 transition-colors'
                                         >
                                             <ExternalLink className='w-3.5 h-3.5' />
-                                            {selectedItem.reserved ? 'Allerede Reservert' : 'Kjøp Gave'}
+                                            Kjøp direkte
                                         </a>
-                                        <button className='inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium border border-border hover:bg-muted/10 transition-colors'>
-                                            <Heart className='w-3.5 h-3.5' />
-                                            Reserver
-                                        </button>
                                     </div>
                                 </div>
                             </div>
