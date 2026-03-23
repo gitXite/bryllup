@@ -40,7 +40,6 @@ export interface WishlistItem {
     description: string;
     longDescription: string;
     image: string;
-    images: string[];
     link: string;
     category: string;
     reserved?: boolean;

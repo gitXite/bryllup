@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ExternalLink, Heart, X, ChevronRight, ArrowLeft } from 'lucide-react';
+import { ExternalLink, Heart, X, ChevronRight, ArrowLeft, Minus, Plus } from 'lucide-react';
 import { WishlistItem } from '@/types';
 
 const wishlistItems: WishlistItem[] = [
@@ -9,18 +9,14 @@ const wishlistItems: WishlistItem[] = [
         brand: 'Le Creuset',
         price: 395,
         totalAmount: 1,
-        amountReserved: 0,
+        amountReserved: 1,
         description: 'Classic 5.5 Qt Round Dutch Oven in Sea Salt',
         longDescription:
             'The iconic Le Creuset Dutch Oven is a kitchen essential that will last a lifetime. Perfect for slow-cooked stews, soups, and braised meats, this beautiful piece combines exceptional heat distribution with timeless French design. The Sea Salt color will complement any kitchen aesthetic.',
         image: 'https://images.unsplash.com/photo-1585442231910-e59b37c7bb7e?w=600&h=600&fit=crop',
-        images: [
-            'https://images.unsplash.com/photo-1585442231910-e59b37c7bb7e?w=800&h=600&fit=crop',
-            'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop',
-            'https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=800&h=600&fit=crop',
-        ],
         link: 'https://www.lecreuset.com',
         category: 'Kitchen',
+        reserved: true,
     },
     {
         id: '2',
@@ -33,11 +29,6 @@ const wishlistItems: WishlistItem[] = [
         longDescription:
             'Experience the ultimate in luxury with this exquisite Frette bedding set. Crafted from the finest Egyptian cotton with a 600 thread count, these sheets offer unparalleled softness and breathability. The classic white adds timeless elegance to any bedroom.',
         image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=600&fit=crop',
-        images: [
-            'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop',
-            'https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?w=800&h=600&fit=crop',
-            'https://images.unsplash.com/photo-1616627561839-074385245ff6?w=800&h=600&fit=crop',
-        ],
         link: 'https://www.frette.com',
         category: 'Bedroom',
     },
@@ -52,11 +43,6 @@ const wishlistItems: WishlistItem[] = [
         longDescription:
             'The Vitamix A3500 is the ultimate blending machine for the modern kitchen. With built-in wireless connectivity and touchscreen controls, it delivers restaurant-quality results at home. Perfect for smoothies, soups, nut butters, and so much more.',
         image: 'https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=600&h=600&fit=crop',
-        images: [
-            'https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=800&h=600&fit=crop',
-            'https://images.unsplash.com/photo-1610701596061-2ecf227e85b2?w=800&h=600&fit=crop',
-            'https://images.unsplash.com/photo-1622480914645-2c1970d tried?w=800&h=600&fit=crop',
-        ],
         link: 'https://www.vitamix.com',
         category: 'Kitchen',
     },
@@ -66,19 +52,14 @@ const wishlistItems: WishlistItem[] = [
         brand: 'Baccarat',
         price: 320,
         totalAmount: 4,
-        amountReserved: 4,
+        amountReserved: 0,
         description: 'Set of 2 Crystal Champagne Flutes',
         longDescription:
             'Toast to love with these exquisite Baccarat crystal champagne flutes. Hand-crafted by master artisans in France, each flute showcases exceptional clarity and brilliance. The elegant silhouette and fine rim elevate every celebration.',
         image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&h=600&fit=crop',
-        images: [
-            'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=800&h=600&fit=crop',
-            'https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&h=600&fit=crop',
-            'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=800&h=600&fit=crop',
-        ],
         link: 'https://www.baccarat.com',
         category: 'Dining',
-        reserved: true,
+        reserved: false,
     },
     {
         id: '5',
@@ -91,11 +72,6 @@ const wishlistItems: WishlistItem[] = [
         longDescription:
             'The Dyson Airwrap uses intelligent heat control and the Coanda effect to style hair without extreme heat damage. This complete set includes attachments for curling, waving, smoothing, and drying - everything needed for salon-quality styling at home.',
         image: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=600&h=600&fit=crop',
-        images: [
-            'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=600&fit=crop',
-            'https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=800&h=600&fit=crop',
-            'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&h=600&fit=crop',
-        ],
         link: 'https://www.dyson.com',
         category: 'Beauty',
     },
@@ -110,11 +86,6 @@ const wishlistItems: WishlistItem[] = [
         longDescription:
             'Bring Italian style to your kitchen with this stunning Smeg espresso machine. The retro design is complemented by modern functionality, including a 15-bar pump, steam wand for frothing, and cup warmer. Start every morning with café-quality espresso.',
         image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&h=600&fit=crop',
-        images: [
-            'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=600&fit=crop',
-            'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&h=600&fit=crop',
-            'https://images.unsplash.com/photo-1498804103079-a6351b050096?w=800&h=600&fit=crop',
-        ],
         link: 'https://www.smeg.com',
         category: 'Kitchen',
     },
@@ -122,15 +93,11 @@ const wishlistItems: WishlistItem[] = [
 
 export function Wishlist() {
     const [scrolled, setScrolled] = useState(false);
-    const [selectedItem, setSelectedItem] = useState<WishlistItem | null>(null);
-    const [activeImageIndex, setActiveImageIndex] = useState(0);
+    const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
+    const [items, setItems] = useState<WishlistItem[]>(wishlistItems);
     const [quantity, setQuantity] = useState(1);
-    const availableAmount = selectedItem?.totalAmount - selectedItem?.amountReserved;
-    
-    // Reset quantity when item changes
-    useEffect(() => {
-        setQuantity(1);
-    }, [selectedItem?.id]);
+    const selectedItem = items.find(i => i.id === selectedItemId);
+    const availableAmount = selectedItem ? selectedItem.totalAmount - selectedItem.amountReserved : 0;
 
     useEffect(() => {
         const handler = () => setScrolled(window.scrollY > 60);
@@ -140,27 +107,41 @@ export function Wishlist() {
 
     useEffect(() => {
         const isMobile = window.innerWidth < 1024;
+
         if (selectedItem && isMobile) {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = '';
         }
+
         return () => {
             document.body.style.overflow = '';
         };
     }, [selectedItem]);
 
     const handleItemClick = (item: WishlistItem) => {
-        setSelectedItem(item);
-        setActiveImageIndex(0);
+        setSelectedItemId(item.id);
+        setQuantity(1);
     };
 
-    const handleReserve = () => {
-        return;
+    const handleReserve = (item: WishlistItem) => {
+        setItems(prev => 
+            prev.map(i => {
+                if (i.id !== item.id) return i;
+
+                const newAmountReserved = Math.min(i.amountReserved + quantity, i.totalAmount);
+
+                return {
+                    ...i,
+                    amountReserved: newAmountReserved,
+                    reserved: newAmountReserved === i.totalAmount,
+                };
+            })
+        );
     };
 
     const handleClose = () => {
-        setSelectedItem(null);
+        setSelectedItemId(null);
     };
 
     return (
@@ -223,7 +204,7 @@ export function Wishlist() {
                                         : 'grid-cols-1 md:grid-cols-2 xl:grid-cols-3'
                                 }`}
                         >
-                            {wishlistItems.map((item) => (
+                            {items.map((item) => (
                                 <button
                                     key={item.id}
                                     onClick={() => handleItemClick(item)}
@@ -290,37 +271,15 @@ export function Wishlist() {
                     
                                 <div className='relative aspect-[4/3] bg-muted/10'>
                                     <img
-                                        src={selectedItem.images[activeImageIndex]}
+                                        src={selectedItem.image}
                                         alt={selectedItem.name}
-                                        className='object-cover'
+                                        className='absolute inset-0 w-full h-full object-cover'
                                     />
                                     {selectedItem.reserved && (
                                         <div className='absolute top-3 left-3 px-2.5 py-1 bg-foreground/90 text-card text-xs uppercase tracking-wider rounded-full'>
                                             Reservert
                                         </div>
                                     )}
-                                </div>
-                    
-                                <div className='flex gap-1.5 px-3 py-2.5 border-b border-border/50'>
-                                    {selectedItem.images.map((img, index) => (
-                                        <button
-                                            key={index}
-                                            onClick={() => setActiveImageIndex(index)}
-                                            className={`relative w-10 h-10 rounded overflow-hidden border-2 transition-all
-                                                ${
-                                                    activeImageIndex === index
-                                                        ? 'border-accent'
-                                                        : 'border-transparent hover:border-border'
-                                                }
-                                            `}
-                                        >
-                                            <img
-                                                src={img}
-                                                alt={`${selectedItem.name} view ${index + 1}`}
-                                                className='object-cover'
-                                            />
-                                        </button>
-                                    ))}
                                 </div>
                     
                                 <div className='p-4 lg:p-5'>
@@ -334,11 +293,11 @@ export function Wishlist() {
                                             </h2>
                                         </div>
                                         <div className='text-right relative top-5'>
-                                            <p className='text-lg font-medium text-foreground'>
-                                                NOK {selectedItem.price.toLocaleString()}
+                                            <p className='text-xl font-medium text-foreground'>
+                                                <span className='text-xs'>NOK</span> {selectedItem.price.toLocaleString()}
                                             </p>
                                             {selectedItem.totalAmount > 1 && (
-                                                <div className='mb-4'>
+                                                <div className='mb-4 min-w-30'>
                                                     <div className='flex items-center justify-between mb-1.5'>
                                                         <span className='text-xs uppercase tracking-wider text-muted-v-foreground'>
                                                             Reservert
@@ -349,25 +308,27 @@ export function Wishlist() {
                                                     </div>
                                                     <div className='w-full h-1 bg-muted/20 rounded-full'>
                                                         <div
-                                                            className='h-1 bg-accent rounded-full transition-all'
+                                                            className='h-1 bg-gold rounded-full transition-all'
                                                             style={{ width: `${(selectedItem.amountReserved / selectedItem.totalAmount) * 100}%` }}
                                                         />
                                                     </div>
                                             
                                                     {availableAmount > 0 && (
                                                         <div className='flex items-center gap-3 mt-3'>
-                                                            <span className='text-xs text-muted-v-foreground'>Antall:</span>
+                                                            <span className='text-xs tracking-wider text-muted-v-foreground'>Antall:</span>
                                                             <div className='flex items-center gap-2'>
                                                                 <button
                                                                     onClick={() => setQuantity(q => Math.max(1, q - 1))}
-                                                                    className='w-6 h-6 rounded-full border border-border flex items-center justify-center text-muted-v-foreground hover:text-foreground transition-colors'
+                                                                    disabled={quantity === 1}
+                                                                    className='w-6 h-6 rounded-full disabled:cursor-not-allowed disabled:hover:text-muted-v-foreground border border-border flex items-center justify-center text-muted-v-foreground hover:text-foreground transition-colors'
                                                                 >
                                                                     <Minus className='w-3 h-3' />
                                                                 </button>
                                                                 <span className='text-sm font-medium w-4 text-center'>{quantity}</span>
                                                                 <button
                                                                     onClick={() => setQuantity(q => Math.min(availableAmount, q + 1))}
-                                                                    className='w-6 h-6 rounded-full border border-border flex items-center justify-center text-muted-v-foreground hover:text-foreground transition-colors'
+                                                                    disabled={availableAmount === quantity}
+                                                                    className='w-6 h-6 rounded-full disabled:cursor-not-allowed disabled:hover:text-muted-v-foreground border border-border flex items-center justify-center text-muted-v-foreground hover:text-foreground transition-colors'
                                                                 >
                                                                     <Plus className='w-3 h-3' />
                                                                 </button>
@@ -389,7 +350,7 @@ export function Wishlist() {
                     
                                     <div className='flex flex-col sm:flex-row gap-2'>
                                         <button
-                                            onClick={handleReserve}
+                                            onClick={() => handleReserve(selectedItem)}
                                             disabled={availableAmount === 0}
                                             className={`flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors
                                                 ${availableAmount === 0
