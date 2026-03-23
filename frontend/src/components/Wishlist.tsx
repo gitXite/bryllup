@@ -161,10 +161,10 @@ export function Wishlist() {
                 <div className='max-w-7xl mx-auto px-6 py-6'>
                     <a
                         href='/'
-                        className='absolute group hidden sm:flex items-center gap-2 hover:bg-muted/10 transition-color duration-200 left-5 lg:left-20 top-1/2 -translate-y-1/2 px-4 py-1 rounded-full border border-transparent hover:border-border'
+                        className='absolute group flex items-center gap-2 hover:bg-muted/10 transition-color duration-200 left-5 lg:left-20 top-1/2 -translate-y-1/2 px-4 py-1 rounded-full border border-transparent hover:border-border'
                     >
-                        <ArrowLeft size={12} className='group-hover:-translate-x-1 transition-transform' />
-                        Tilbake
+                        <ArrowLeft size={window.innerWidth < 1024 ? 18 : 12} className='group-hover:-translate-x-1 transition-transform' />
+                        {window.innerWidth < 1024 ? '' : 'Tilbake'}
                     </a>
                     <div className='text-center'>
                         <h1 className='font-cormorant text-3xl md:text-4xl font-light text-foreground tracking-none'>
@@ -297,7 +297,7 @@ export function Wishlist() {
                                                 <span className='text-xs'>NOK</span> {selectedItem.price.toLocaleString()}
                                             </p>
                                             {selectedItem.totalAmount > 1 && (
-                                                <div className='mb-4 min-w-30'>
+                                                <div className='mb-4 mt-2 min-w-30'>
                                                     <div className='flex items-center justify-between mb-1.5'>
                                                         <span className='text-xs uppercase tracking-wider text-muted-v-foreground'>
                                                             Reservert
